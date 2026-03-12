@@ -4,6 +4,12 @@ const DataFetchServer = async(props) => {
 
     const userName = searchParams.name;
 
+    await new Promise((resolve)=>{
+        setTimeout(() => {
+            resolve()
+        }, 2000);
+    })
+
 
 
 
