@@ -36,7 +36,7 @@ const getAllDoctors = cache(async () => {
 });
 
 
-/*const formAction = (FormData) =>{
+const formAction = (FormData) =>{
     const {name,email,message} = Object.fromEntries(FormData.entries());
     console.log(name,email,message);
-}*/
+}
