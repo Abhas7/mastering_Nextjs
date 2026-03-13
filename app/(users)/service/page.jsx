@@ -1,7 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { easeInOut, motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
+import gsap from 'gsap';
 
 const teamMembers = [
   {
@@ -59,8 +61,32 @@ const teamMembers = [
 ];
 
 const Service = () => {
+    const cardRef = useRef();
+
+    useEffect(()=>{
+     const ctx = gsap.context(()=>{
+        const element = cardRef.current
+            //set
+            gsap.set(element,{
+                opacity:0,
+                y:50,
+                scale:1
+            })
+            //to
+            gsap.to(element,{
+                opacity:1,
+                y:0,
+               scale:1.1,
+               ease:"power2.out",
+               duration:1,
+            });
+
+            
+        })
+        return () => ctx.revert();
+    },[])
   return (
-    <div className="min-h-screen bg-[#0a0a0a] py-20 px-4">
+    <div ref = {cardRef} className="min-h-screen bg-[#0a0a0a] py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
